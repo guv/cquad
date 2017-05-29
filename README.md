@@ -2,7 +2,7 @@
 
 [![Clojars Project](https://img.shields.io/clojars/v/cquad.svg)](https://clojars.org/cquad)
 
-A Clojure library for calculation improper integrals.
+A Clojure library for the calculation of improper integrals.
 The implementation is based on the Java port of quadpack in JDistlib.
 
 ## Usage
