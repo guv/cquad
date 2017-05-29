@@ -1,6 +1,7 @@
 # cquad
 
 [![Clojars Project](https://img.shields.io/clojars/v/cquad.svg)](https://clojars.org/cquad)
+[![License: LGPL v3](https://img.shields.io/badge/License-LGPL%20v3-blue.svg)](http://www.gnu.org/licenses/lgpl-3.0)
 
 A Clojure library for the calculation of improper integrals.
 The implementation is based on the Java port of quadpack in JDistlib.
@@ -22,9 +23,9 @@ Minimal example:
 
 ## License
 
-[JDistlib](http://jdistlib.sourceforge.net/) is licensed under GPLv3
+[JDistlib](http://jdistlib.sourceforge.net/) is licensed under GPL v3
 
-
+cquad is licensed under LGPL v3.
 
 Copyright (C) 2017 Gunnar Völkel
 
