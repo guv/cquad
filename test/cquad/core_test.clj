@@ -14,8 +14,8 @@
   (:require
     [clojure.test :refer :all]
     [cquad.core :as cquad])
-  (:import (net.sourceforge.jdistlib Normal)
-           (net.sourceforge.jdistlib.math UnivariateFunction)))
+  (:import (org.apache.commons.math3.distribution NormalDistribution)
+           (cquad Quadpack$Function)))
 
 
 
@@ -40,9 +40,10 @@
 
 (deftest normal-density-test
   (testing "integral over normal density"
-    (let [area (cquad/improper-integral
+    (let [nd (NormalDistribution. 0.0, 1.0)
+          area (cquad/improper-integral
                  (fn ^double [^double x]
-                   (Normal/density x, 0, 1, false))
+                   (.density nd x))
                  0.0,
                  :positive-infinity)]
       (is (< (Math/abs (- area 0.5)) 1E-6)))))
@@ -67,8 +68,8 @@
 (deftest alternate-fn-definitions-test
   (testing "Function definition via UnivariateFunction"
     (let [area (cquad/improper-integral
-                 (reify UnivariateFunction
-                   (eval [_, x]
+                 (reify Quadpack$Function
+                   (invoke [_, x]
                      (/ 1.0 (inc (* x x)))))
                  :negative-infinity,
                  :positive-infinity)]

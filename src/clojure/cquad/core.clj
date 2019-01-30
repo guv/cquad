@@ -12,10 +12,8 @@
 
 (ns cquad.core
   (:import
-    net.sourceforge.jdistlib.math.Constants
-    cquad.Integrate
-    (net.sourceforge.jdistlib.math UnivariateFunction)
-    (clojure.lang IFn$DD)))
+    (clojure.lang IFn$DD)
+    (cquad Quadpack Quadpack$Function)))
 
 
 
@@ -40,8 +38,8 @@
            the routine will end with ier = 6.
   limit  - (int) gives an upper bound on the number of subintervals in the partition of (a,b), limit >= 1"
   [f, lower-bound, upper-bound, & {:keys [epsabs, epsrel, limit]
-                                   :or {epsabs (* 64.0 Constants/DBL_EPSILON),
-                                        epsrel (* 64.0 Constants/DBL_EPSILON),
+                                   :or {epsabs 1.4210854715202004E-14,
+                                        epsrel 1.4210854715202004E-14,
                                         limit 100}}]
   (assert (or (number? lower-bound) (= lower-bound :negative-infinity))
     "lower-bound must be either a number or :negative-infinity")
@@ -63,17 +61,16 @@
                 -1.0 upper-bound
                 ; bound does not matter for inf = 2
                 2.0 0.0),
-        uf (if (instance? UnivariateFunction f)
+        uf (if (instance? Quadpack$Function f)
              f
              (if (instance? IFn$DD f)
-               (reify UnivariateFunction
-                 (eval [_, x]
+               (reify Quadpack$Function
+                 (invoke [_, x]
                    (.invokePrim ^IFn$DD f x)))
                (do
                  (print-warning "Warning: improper-integral invoked with a non-primitive function.\n"
-                   "This will slow down the calculation. You should provide a primitive function with interface IFn$DD, e.g. (fn ^double [^double x] ...)")
-                 (reify UnivariateFunction
-                   (eval [_, x]
-                     (f x))))))
-        ires (Integrate/dqagie uf, bound, inf, epsabs, epsrel, limit)]
-    (.result ires)))
+                   "This will slow down the calculation. You should provide a primitive function with interface IFn$DD, e.g. (fn ^double [^double x] ...), or an instance of cquad.Quadpack$Function.")
+                 (reify Quadpack$Function
+                   (invoke [_, x]
+                     (f x))))))]
+    (Quadpack/integrateInf uf, bound, inf, epsabs, epsrel, limit)))
