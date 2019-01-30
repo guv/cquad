@@ -6,6 +6,9 @@
 A Clojure library for the calculation of improper integrals.
 The implementation is based on the Fortran library [quadpack](https://people.sc.fsu.edu/~jburkardt/f_src/quadpack_double/quadpack_double.html) ([Source](https://people.sc.fsu.edu/~jburkardt/f_src/quadpack_double/quadpack_double.f90)).
 
+**Currently, only Linux 64 bit and Windows 64 bit are supported.**
+More target platforms can be supported by compiling the native library for these.
+
 ## Usage
 
 Minimal example:
