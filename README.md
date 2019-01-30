@@ -1,10 +1,10 @@
 # cquad
 
 [![Clojars Project](https://img.shields.io/clojars/v/cquad.svg)](https://clojars.org/cquad)
-[![License: LGPL v3](https://img.shields.io/badge/License-LGPL%20v3-blue.svg)](http://www.gnu.org/licenses/lgpl-3.0)
+[![License: LGPL v3](https://img.shields.io/badge/License-EPL%20v1.0-blue.svg)](http://www.gnu.org/licenses/lgpl-3.0)
 
 A Clojure library for the calculation of improper integrals.
-The implementation is based on the Java port of quadpack in JDistlib.
+The implementation is based on the Fortran library [quadpack](https://people.sc.fsu.edu/~jburkardt/f_src/quadpack_double/quadpack_double.html) ([Source](https://people.sc.fsu.edu/~jburkardt/f_src/quadpack_double/quadpack_double.f90)).
 
 ## Usage
 
@@ -23,21 +23,6 @@ Minimal example:
 
 ## License
 
-[JDistlib](http://jdistlib.sourceforge.net/) is licensed under GPL v3
+Copyright (C) 2017-2019 Gunnar Völkel
 
-cquad is licensed under LGPL v3.
-
-Copyright (C) 2017 Gunnar Völkel
-
-This program is free software: you can redistribute it and/or modify
-it under the terms of the GNU Lesser General Public License as published by
-the Free Software Foundation, either version 3 of the License, or
-(at your option) any later version.
-
-This program is distributed in the hope that it will be useful,
-but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-GNU Lesser General Public License for more details.
-
-You should have received a copy of the GNU Lesser General Public License
-along with this program.  If not, see <http://www.gnu.org/licenses/>.
+cquad is licensed under Eclipse Public License 1.0
