@@ -1,4 +1,4 @@
-(defproject cquad "0.2.1"
+(defproject cquad "0.2.2"
   :description "Library for calculating improper integrals."
   :url "https://github.com/guv/cquad"
   :scm {:name "git"
