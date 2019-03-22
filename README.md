@@ -1,7 +1,7 @@
 # cquad
 
 [![Clojars Project](https://img.shields.io/clojars/v/cquad.svg)](https://clojars.org/cquad)
-[![License: LGPL v3](https://img.shields.io/badge/License-EPL%20v1.0-blue.svg)](http://www.gnu.org/licenses/lgpl-3.0)
+[![License: EPL v1.0](https://img.shields.io/badge/License-EPL%20v1.0-blue.svg)](https://www.eclipse.org/legal/epl-v10.html)
 
 A Clojure library for the calculation of improper integrals.
 The implementation is based on the Fortran library [quadpack](https://people.sc.fsu.edu/~jburkardt/f_src/quadpack_double/quadpack_double.html) ([Source](https://people.sc.fsu.edu/~jburkardt/f_src/quadpack_double/quadpack_double.f90)).
